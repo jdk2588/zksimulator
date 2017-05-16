@@ -1,0 +1,20 @@
+#Number of redis servers, could not use an integer like client, because redis servers need host and port
+servers:
+  -
+    "znode0.in:2181"
+  -
+    "znode1.in:2181"
+  -
+    "znode2.in:2181"
+
+#If not able to run actual redis servers, set mock to true
+mock: false
+
+#Number of clients, upto 12 clients can be added(To stimulate)
+numberofclients: 10
+
+#Number of messages to be sent at a time
+messages: 2
+
+#Output messages
+debug: true
