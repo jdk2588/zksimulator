@@ -3,6 +3,7 @@ package main
 import (
   "os"
   "fmt"
+  "log"
   "flag"
   "sync"
   "time"
@@ -21,6 +22,11 @@ Common Options:
     -h, --help                       Show this message
     -v, --version                    Show version
 `
+
+func timeTrack(start time.Time, name string) {
+    elapsed := time.Since(start)
+    log.Printf("%s took %s", name, elapsed)
+}
 
 func usage() {
         fmt.Printf("%s\n", usageStr)
@@ -51,6 +57,7 @@ func main() {
 
   var zkconn = S.Connect(S.Env.Servers, 1*time.Second)
   defer S.Disconnect(zkconn)
+  defer timeTrack(time.Now(), "ZkSimulator")
 
   var clients = S.GetClients()
 

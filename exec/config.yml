@@ -6,6 +6,10 @@ servers:
     "znode1.in:2181"
   -
     "znode2.in:2181"
+  -
+    "znode3.in:3181"
+  -
+    "znode4.in:3181"
 
 #If not able to run actual redis servers, set mock to true
 mock: false
@@ -14,7 +18,7 @@ mock: false
 numberofclients: 10
 
 #Number of messages to be sent at a time
-messages: 2
+messages: 1000
 
 #Output messages
-debug: true
+debug: false
