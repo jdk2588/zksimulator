@@ -16,7 +16,6 @@ func Dispatcher(ch chan string, zkconn *ZkConn, wg *sync.WaitGroup, clients []*C
 func simulate(message string, clients []*Client, zkconn *ZkConn) {
 
   var wg1 sync.WaitGroup
-  
   for _ , c := range(clients) {
     wg1.Add(1)
     go c.process(zkconn, message, &wg1)

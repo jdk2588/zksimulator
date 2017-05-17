@@ -2,6 +2,7 @@ package zksimulator
 
 import (
   "time"
+  "fmt"
 	"github.com/samuel/go-zookeeper/zk"
 )
 
@@ -38,6 +39,5 @@ func (zl *ZkLock) Lock() error {
 }
 
 func (zl *ZkLock) Unlock() error {
-  e := zl.l.Unlock()
-  return e
+  zl.l.Unlock()
 }

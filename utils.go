@@ -29,7 +29,7 @@ func clientLog(text, senderId string, node1 Instance) {
      }
 }
 
-func simpleLog(text string){
+func SimpleLog(text string){
     if Env.Debug {
       fmt.Println(text)
     }
