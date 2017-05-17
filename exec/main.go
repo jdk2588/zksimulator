@@ -11,6 +11,7 @@ import (
    S  "zksimulator"
    Conf "zksimulator/config"
   "github.com/pborman/uuid"
+  "github.com/nladuo/go-zk-lock"
 )
 
 var usageStr = `
@@ -55,9 +56,14 @@ func main() {
 
   S.Init()
 
-  var zkconn = S.Connect(S.Env.Servers, 1*time.Second)
-  defer S.Disconnect(zkconn)
+  err := DLocker.EstablishZkConn(S.Env.Servers, 1*time.Second)
+  defer DLocker.CloseZkConn()
   defer timeTrack(time.Now(), "ZkSimulator")
+  if err != nil {
+         panic(err)
+  }
+  // var zkconn = S.Connect(S.Env.Servers, 1*time.Second)
+  // defer S.Disconnect(zkconn)
 
   var clients = S.GetClients()
 
@@ -74,7 +80,7 @@ func main() {
       ch <- msg
     }()
 
-    go S.Dispatcher(ch, zkconn, &wg, clients)
+    go S.Dispatcher(ch, &wg, clients)
 
   }
   wg.Wait()
