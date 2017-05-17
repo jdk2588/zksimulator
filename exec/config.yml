@@ -18,7 +18,7 @@ mock: false
 numberofclients: 10
 
 #Number of messages to be sent at a time
-messages: 100
+messages: 1000
 
 #Output messages
 debug: false
