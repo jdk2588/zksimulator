@@ -7,23 +7,16 @@ import (
 
 type Settings struct {
   Servers []string `yaml:"servers"`
-  Mock bool `yaml:"mock"`
   NoOfClients int `yaml:"numberofclients"`
-  PartitionType string `yaml:"partitiontype"`
   MessageCount int `yaml:"messages"`
-  FailAnyZK bool `yaml:"failanyzk"`
-  FailZKNode int `yaml:"failzknode"`
   Debug bool `yaml:"debug"`
 }
 
 func DefaultConfig() Settings {
   var settings Settings
   settings.Servers = []string{}
-  settings.Mock = true
   settings.NoOfClients = 3
-  settings.PartitionType = "rack"
   settings.MessageCount = 1
-  settings.FailAnyZK = false
   settings.Debug = true
   return settings
 

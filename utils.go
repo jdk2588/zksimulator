@@ -42,7 +42,9 @@ func failLog(text, senderId string, node1, node2 Instance) {
 }
 
 func successLog(text, senderId string, node1 Instance) {
+    if Env.Debug {
       boldGreen.Println(text+" "+node1.getIdent()+" "+senderId)
+    }
 }
 
 func noLockgiven(text, senderId string, node1 Instance) {

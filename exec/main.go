@@ -34,6 +34,7 @@ func usage() {
 }
 
 func main() {
+  defer timeTrack(time.Now(), "ZkSimulator")
   var wg sync.WaitGroup
 
   var configFile string
@@ -57,7 +58,6 @@ func main() {
 
   var zkconn = S.Connect(S.Env.Servers, 1*time.Second)
   defer S.Disconnect(zkconn)
-  defer timeTrack(time.Now(), "ZkSimulator")
 
   var clients = S.GetClients()
 

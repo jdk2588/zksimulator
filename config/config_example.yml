@@ -1,8 +1,15 @@
-servers: "znode0.in:2181, znode1.in:2181, znode2.in:2181"
+servers:
+  -
+    "znode0.in:2181"
+  -
+    "znode1.in:2181"
+  -
+    "znode2.in:2181"
+  -
+    "znode3.in:3181"
+  -
+    "znode4.in:3181"
 
-mock: false
 numberofclients: 7
-partitiontype: region
 messages: 1
-failanyzk: false
-failzknode: 1
+debug: false

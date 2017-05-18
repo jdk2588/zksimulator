@@ -26,7 +26,7 @@ type ZkLock struct {
 
 func GetLock(zkconn *ZkConn, msg *Message) *ZkLock {
   acl := zk.WorldACL(zk.PermAll)
-  l := zk.NewLock(zkconn.c, "/"+msg.key, acl)
+  l := zk.NewLock(zkconn.c, "/lock/"+msg.key, acl)
   zl := &ZkLock{}
   zl.l = l
   return zl
